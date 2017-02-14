@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', index);
+app.use('/', index);
 //app.use('/users', users);
 
 //db = mongoose.connection();
@@ -43,23 +43,17 @@ var me = new User({
 	name: 'Michelle'
 });
 
-// chris.dudify(function(err, name){
-// 	if(err) throw err;
-
-// 	console.log('Your new name is ' + name);
-// });
-
 // chris.save(function(err){
 // 	if(err) throw err;
 
 // 	console.log('User created');
 // });
 
-me.save(function(err){
-	if(err) throw err;
+// me.save(function(err){
+// 	if(err) throw err;
 
-	console.log('User created');
-});
+// 	console.log('User created');
+// });
 
 //READ
 
@@ -68,11 +62,13 @@ app.get('/users', function(req, res){
     res.send(users);
   });
 });
+
+//CREATE
 app.get('/:username', function(req, res){
   var newUser = new User({name: req.params.username });
   newUser.save(function(err){
     if(err) throw err;
-    //res.redirect("/");
+    res.redirect("/");
   //   User.find({name: req.params.username}, function(err, users){
   //   res.send(users);
   // });
@@ -80,6 +76,7 @@ app.get('/:username', function(req, res){
 
 });
 
+//COMMUNICAING WITH HOJAN.JS
 // app.get('/', function(req, res){
 //   //res.render(__dirname + '/views/index.hjs');
 //   User.find({}, function(err, users){
@@ -100,16 +97,21 @@ app.get("/:name", function(req, res){
   });
 });
 
+// User.findById('58a376bb52a6701f35675485', function(err, user){
+//  if(err) throw err;
+
+//  user.name = 'Chris';
+//  user.location = 'usa';
+
+//  user.save(function(err){
+//    if (err) throw err;
+
+//    console.log('User successfully updated!');
+//  });
+// });
+
 User.remove({}, function(err, user){});
 //CREATE
-app.post('/quotes', function(req, res){
-
-  User.save(req.body, function(err, result){
-    if(err) throw err;
-    console.log('saved to database')
-    res.redirect('/')
-  });
-  });
 
 //   // User.find({name: 'Michelle'}, function(err, user){
 //   //   if(err) throw err;
