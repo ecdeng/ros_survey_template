@@ -76,6 +76,21 @@ app.get('/:username', function(req, res){
 
 });
 
+// User.findById('58a376bb52a6701f35675485', function(err, user){
+//  if(err) throw err;
+
+//  user.name = 'Chris';
+//  user.location = 'usa';
+
+//  user.save(function(err){
+//    if (err) throw err;
+
+//    console.log('User successfully updated!');
+//  });
+// });
+
+//User.remove({}, function(err, user){});
+
 //COMMUNICAING WITH HOJAN.JS
 // app.get('/', function(req, res){
 //   //res.render(__dirname + '/views/index.hjs');
@@ -97,20 +112,20 @@ app.get("/:name", function(req, res){
   });
 });
 
-// User.findById('58a376bb52a6701f35675485', function(err, user){
-//  if(err) throw err;
+User.findById('58a38e729f2fe722ee62b2dc', function(err, user){
+ if(err) throw err;
 
-//  user.name = 'Chris';
-//  user.location = 'usa';
+ user.name = 'Chris';
+ user.location = 'usa';
 
-//  user.save(function(err){
-//    if (err) throw err;
+ user.save(function(err){
+   if (err) throw err;
 
-//    console.log('User successfully updated!');
-//  });
-// });
+   console.log('User successfully updated!');
+ });
+});
 
-User.remove({}, function(err, user){});
+
 //CREATE
 
 //   // User.find({name: 'Michelle'}, function(err, user){
