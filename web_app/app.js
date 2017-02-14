@@ -25,13 +25,14 @@ app.set('view engine', 'hjs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+//app.use('/', index);
+//app.use('/users', users);
 
+//db = mongoose.connection();
 //New stuff
 //CREATE new USER
 var chris = new User({
@@ -48,11 +49,11 @@ var me = new User({
 // 	console.log('Your new name is ' + name);
 // });
 
-chris.save(function(err){
-	if(err) throw err;
+// chris.save(function(err){
+// 	if(err) throw err;
 
-	console.log('User created');
-});
+// 	console.log('User created');
+// });
 
 me.save(function(err){
 	if(err) throw err;
@@ -61,8 +62,65 @@ me.save(function(err){
 });
 
 //READ
-//find all the users
 
+app.get('/users', function(req, res){
+  User.find({}, function(err, users){
+    res.send(users);
+  });
+});
+app.get('/:username', function(req, res){
+  var newUser = new User({name: req.params.username });
+  newUser.save(function(err){
+    if(err) throw err;
+    //res.redirect("/");
+  //   User.find({name: req.params.username}, function(err, users){
+  //   res.send(users);
+  // });
+  });
+
+});
+
+// app.get('/', function(req, res){
+//   //res.render(__dirname + '/views/index.hjs');
+//   User.find({}, function(err, users){
+//     if(err) throw err;
+//     if(users.length > 1){
+//       res.render("index", {data: users})
+//     } else{
+//       res.render("index", {data: "No names"})
+//     }
+//   });
+// });
+
+app.get("/:name", function(req, res){
+  var newName = new User({name: req.params.name });
+    newName.save(function(err){
+    if(err) throw err;
+    res.redirect("/");
+  });
+});
+
+User.remove({}, function(err, user){});
+//CREATE
+app.post('/quotes', function(req, res){
+
+  User.save(req.body, function(err, result){
+    if(err) throw err;
+    console.log('saved to database')
+    res.redirect('/')
+  });
+  });
+
+//   // User.find({name: 'Michelle'}, function(err, user){
+//   //   if(err) throw err;
+//   //   console.log('hello');
+//   //   console.log(user);
+//   // });
+
+// });
+
+
+//find all the users
 // User.find({}, function(err, users){
 // 	if(err) throw err;
 

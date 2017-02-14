@@ -7,5 +7,20 @@
   <body>
     <h1>{{ title }}</h1>
     <p>Welcome to {{ title }}</p>
+
+    <ul>
+      {{#data}} name: {{ name }} {{/data}}</li>
+    </ul>
+
+<!--   </ for (var i = 0; i < data.length; i++) {/>
+    <p> {{@}} data[i].name /> </p>
+  </ } /> -->
+
+ <!-- CREATE Operation -->
+<!-- 	<form action="/quotes" method="post">
+	  <input type="text" placeholder="name" name="name"> -->
+<!-- 	  <input type="text" placeholder="quote" name="quote"> -->
+<!-- 	  <button type="submit">Submit</button>
+	</form> -->
   </body>
 </html>
