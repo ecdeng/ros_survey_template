@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.js"></script>
+<script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.js"></script>
+
+<script type="text/javascript" type="text/javascript">
+  
+  var ros = new ROSLIB.Ros({ //connects to rosbridge server allows to interface with web browsers
+    url : 'ws://localhost:9090'
+  });
+
+  var fibonacciClient = new ROSLIB.ActionClient({
+    ros : ros,
+    serverName : '/fibonacci',
+    actionName : 'actionlib_tutorials/FibonacciAction'
+  });
+
+  var goal = new ROSLIB.Goal({ //actionlib goal to send server
+    actionClient : fibonacciClient,
+    goalMessage : {
+      order : 7 //length of fic sequence to compute
+    }
+  });
+
+  goal.on('feedback', function(feedback) { //feedback updates while reaching goal
+    console.log('Feedback: ' + feedback.sequence);
+  });
+
+  goal.on('result', function(result) { // The result of the goal
+    console.log('Final Result: ' + result.sequence);
+  });
+
+  ros.on('connection', function() { // This adds a listener for a connection event to the ros object
+    console.log('Connected to websocket server.');
+  });
+
+  ros.on('error', function(error) {
+    console.log('Error connecting to websocket server: ', error);
+  });
+
+  ros.on('close', function() {
+    console.log('Connection to websocket server closed.');
+  });
+
+  goal.send(); //send goal to the actionlib server
+
+</script>
+
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>Welcome to {{ des }}</p>
+
+    <ul>
+      {{#data}} name: {{ name }} {{/data}}</li>
+    </ul>
+
+ <!-- CREATE Operation -->
+<!-- 	<form action="/quotes" method="post">
+	  <input type="text" placeholder="name" name="name"> -->
+<!-- 	  <input type="text" placeholder="quote" name="quote"> -->
+<!-- 	  <button type="submit">Submit</button>
+	</form> -->
+  </body>
+</html>
+
