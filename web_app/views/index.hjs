@@ -4,9 +4,78 @@
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+  <body style="background-color:powderblue;">
     <h1>{{ title }}</h1>
-    <p>Welcome to {{ des }}</p>
+    <p> Below is a list of items that describe children. For each item that describes the child now or within the past 2 months, please circle 0 1, or 2.</p>
+    <form>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  1. Aches or pains (without medical cause)
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  2. Acts too young for age        
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  3. Afraid to try new things        
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  4. Avoids looking others in the eye       
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  5. Can't concentrate, can't pay attention for long.      
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  5. Can't concentrate, can't pay attention for long.      
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  6. Can't sit still, restless, or hyperactive.     
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  7. Can't stand habing things out of place.       
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  8. Can't stand waiting; wants everything now.      
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  9. Chews on things that aren't edible.     
+        <br>
+        <br>
+        <input type="checkbox" name="descrip1" value="0"> 0 
+        <input type="checkbox" name="descrip2" value="1"> 1
+        <input type="checkbox" name="descrip3"  value="2"> 2 
+        &nbsp &nbsp  10. Clings to adults or too dependent.     
+        <br>
+        <br>
+    </form>
+    
 
     <ul>
       {{#data}} name: {{ name }} {{/data}}</li>
